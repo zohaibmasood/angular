@@ -6,48 +6,56 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-Designation: string;
-Username: string;
-NoOfTeamMembers: number;
-TotalCostOfAllProjects: number;
-PendingTasks: number;
-UpcomingProjects: number;
-ProjectCost: number;
+  Designation: string;
+  Username: string;
+  NoOfTeamMembers: number;
+  TotalCostOfAllProjects: number;
+  PendingTasks: number;
+  UpComingProjects: number;
+  ProjectCost: number;
+  CurrentExpenditure: number;
+  AvailableFunds: number;
+  ToDay: Date;
 
-CurrentExpenditure: number;
-AvailableFunds: number;
-Clients: string[];
-Projects: string[];
-Years: number[] =[];
-TeamMembersSummary = [];
-TeamMembers = [];
+  Clients: string[];
+  Projects: string[];
+  Years: number[] = [];
+  TeamMembersSummary = [];
+  TeamMembers = [];
 
   ngOnInit() {
-    this.Designation = "Team Manager";
-    this.Username = "Zohaib Masood";
-    this.NoOfTeamMembers = 10;
-    this.TotalCostOfAllProjects = 2500000;
-    this.PendingTasks = 2;
-    this.UpcomingProjects = 1;
-    this.ProjectCost = 1000000;
-    this.CurrentExpenditure = 125000;
-    this.AvailableFunds = 875000;
+    this.Designation = "Team Leader";
+    this.Username = "Scott Smith";
+    this.NoOfTeamMembers = 67;
+    this.TotalCostOfAllProjects = 240;
+    this.PendingTasks = 15;
+    this.UpComingProjects = 0.2;
+    this.ProjectCost = 2113507;
+    this.CurrentExpenditure = 96788;
+    this.AvailableFunds = 52536;
+    this.ToDay = new Date();
+
     this.Clients = [
-      "ABC Solutions", "DEF industries", "GHI Groups"
+      "ABC Infotech Ltd.", "DEF Software Solutions", "GHI Industries"
     ];
+
     this.Projects = [
       "Project A", "Project B", "Project C", "Project D"
     ];
-    for(var i = 2019;i >= 2010; i--){
+
+    for (var i = 2019; i >= 2010; i--) {
       this.Years.push(i);
     }
+
     this.TeamMembersSummary = [
       { Region: "East", TeamMembersCount: 20, TemporarilyUnavailableMembers: 4 },
       { Region: "West", TeamMembersCount: 15, TemporarilyUnavailableMembers: 8 },
       { Region: "South", TeamMembersCount: 17, TemporarilyUnavailableMembers: 1 },
       { Region: "North", TeamMembersCount: 15, TemporarilyUnavailableMembers: 6 }
     ];
-this.TeamMembers = [
+
+
+    this.TeamMembers = [
       {
         Region: "East", Members: [
           { ID: 1, Name: "Ford", Status: "Available" },
@@ -81,5 +89,33 @@ this.TeamMembers = [
         ]
       }
     ];
+  }
+
+  onProjectChange($event)
+  {
+    if($event.target.innerHTML == "Project A")
+    {
+      this.ProjectCost = 2113507;
+      this.CurrentExpenditure = 96788;
+      this.AvailableFunds = 52436;
+    }
+    else if($event.target.innerHTML == "Project B")
+    {
+      this.ProjectCost = 88923;
+      this.CurrentExpenditure = 22450;
+      this.AvailableFunds = 2640;
+    }
+    else if($event.target.innerHTML == "Project C")
+    {
+      this.ProjectCost = 662183;
+      this.CurrentExpenditure = 7721;
+      this.AvailableFunds = 9811;
+    }
+    else if($event.target.innerHTML == "Project D")
+    {
+      this.ProjectCost = 928431;
+      this.CurrentExpenditure = 562;
+      this.AvailableFunds = 883;
+    }
   }
 }
